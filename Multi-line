@@ -1,0 +1,17 @@
+# Place this file in an easy to access location for ease (e.g. C:\temp\pipeline) 
+# Call this pipeline at search, you can run multiple pipelines 
+# sigma convert .\rule.yml -t splunk -p splunk_windows -p C:\temp\pipeline\pipeline.yml
+name: Simple Pipeline
+priority: 80
+transformations:
+  - id: field_mapping
+    type: field_name_mapping
+    mapping:
+      CommandLine: 
+        - CommandLine
+        - Command_Line
+        - New_Command_Line
+      Image: 
+        - NewProcessName
+        - ImageName
+        - Image_Name

@@ -1,0 +1,13 @@
+# Place this file in an easy to access location for ease (e.g. C:\temp\pipeline) 
+# Call this pipeline at search, you can run multiple pipelines 
+# sigma convert .\rule.yml -t splunk -p splunk_windows -p C:\temp\pipeline\pipeline.yml
+name: Add Index Pipeline
+priority: 80
+transformations:
+  - id: my_index
+    type: add_condition
+    template: true
+    conditions:
+      index: 
+        - wineventlog
+        - more_windows_logs
